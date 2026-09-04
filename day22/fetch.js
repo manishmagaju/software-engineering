@@ -1,0 +1,24 @@
+const pickyPromise = new Promise((resolve, reject) => {
+    const randomNumber = 0.5;
+    if (randomNumber == 0.5) {
+        resolve('Success! The number is greater than 0.5.');
+    } else {
+        reject('Failure! The number is less than or equal to 0.5.');
+    }
+    console.log(randomNumber)
+
+});
+pickyPromise
+    .then((Success) => {
+        console.log("hurry", Success)
+        return "aba k garni"
+    })
+    .then((con) => {
+        console.log(con)
+    })
+    .catch((fail) => {
+        console.log("so sad", fail)
+    })
+    .finally(() => {
+        console("j vayani  hoss")
+    })

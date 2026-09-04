@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch User Data</title>
+</head>
+
+<body>
+
+    <script>
+        const token = "BQCHd19D-mw2bCNPmz3ipMVhb8m60F-8YSVBQoYvaeS83f9Af_j0ifI_t2O52zT8I2z6VkibtTtsY9uJjeZx4dP5BaxOvjv4BGAY02kEe10Vq0BuB-I4Ed85h7JVZPd5YmTauJY89a9oAXJUeMT3AqxjPnMdaK_dhKzutW8aFtaqMCzWJwVIN53IYdu16boGXpzYWCVOKOlQzy8PuW0iNH1x8EBLx2L7rO_MxciKOZiVA1dFKfrklF56oAOoJCd2Rbd8_gzPVlup-8rqhLH1Pn9HXE49UiwG3nrOaAN01OLvyjgLj-r4Tc8_1TyPm7oI3eg"
+        async function fetchUserData() {
+
+            const url = "https://api.spotify.com/v1/albums/4aawyAB9vmqN3uQ7FjRGTy";
+
+            try {
+
+                const response = await fetch(url,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+                )
+                
+
+                // Check if the HTTP status code is between 200 and 299
+                if (!response.ok) {
+                    throw new Error(
+                        `HTTP error! Status: ${response.status}`
+                    );
+                }
+
+                const data = await response.json();
+
+                console.log("Success:", data);
+
+            } catch (error) {
+
+                console.error("Fetch failed:", error.message);
+
+            }
+        }
+
+        fetchUserData();
+    </script>
+
+</body>
+</html>
