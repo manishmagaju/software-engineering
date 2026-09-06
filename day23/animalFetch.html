@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch User Data</title>
+</head>
+
+<body>
+
+    <script>
+        const animals = ["lion", "tiger", "elephant", "cheetah"];
+        const token = "fBmDyEHYvrSPf9lcnzuyN5ZqmRXnolxf8QeVYk5e"
+        async function fetchUserData() {
+
+            const url = `https://api.api-ninjas.com/v1/cats?name={animal}`;
+
+            try {
+
+                const response = await fetch(url,
+                {
+                    headers: {
+                        "X-Api-Key": token
+                    }
+                }
+                )
+                
+
+                // Check if the HTTP status code is between 200 and 299
+                if (!response.ok) {
+                    throw new Error(
+                        `HTTP error! Status: ${response.status}`
+                    );
+                }
+
+                const data = await response.json();
+
+                console.log("Success:", data);
+
+            } catch (error) {
+
+                console.error("Fetch failed:", error.message);
+
+            }
+        }
+
+        fetchUserData();
+    </script>
+
+</body>
+</html>

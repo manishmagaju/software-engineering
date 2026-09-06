@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #toggle{
+
+            box-flex-group: green;
+        }
+
+    </style>
+</head>
+<body>
+    <button id="toggle">
+        clickme 
+    </button>
+    
+    <ul id="list">
+            
+    </ul>
+
+    <script>
+        const toggleButton =document.querySelector('#toggle')
+
+        function createList(){
+            const newList = document.createElement('ul')
+            newList.textContent = prompt("what do you want to add");
+            newList.className ="dyanmic-text"
+
+            const container =document.querySelector('#list')
+            container.appendChild(newList)
+        }
+
+        toggleButton.addEventListener('click',createList
+        )
+
+        
+
+    </script>
+    
+</body>
+</html>

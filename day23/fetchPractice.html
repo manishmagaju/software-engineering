@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body>
+    <div id="card">
+
+    </div>
+
+
+    <script>
+
+
+        //fetching api
+        const token = 'fBmDyEHYvrSPf9lcnzuyN5ZqmRXnolxf8QeVYk5e';
+
+
+        async function fetchingProducts() {
+            try {
+                const fetchedAirports = await fetch('https://api.api-ninjas.com/v1/airports?iata=LHR',
+                    {
+                        headers: {
+                            'X-Api-Key': token
+                        }
+                    }
+
+
+                )
+
+                const fetchedJson = await fetchedAirports.json()
+                const newData = fetchedJson.map(data => {
+                    return {city: data.city}
+
+                })
+                console.log(newData)
+                return newData
+
+
+
+            } catch (error) {
+                console.log("tero code ma error xa", error)
+            }
+        }
+        fetchingProducts()
+
+
+        //main function to display in homepage
+
+        async function cardFunction(params) {
+            const newDatas = await fetchingProducts()
+
+            const mainCard = document.getElementById("card")
+
+            newDatas.forEach(element => {
+                const country = document.createElement('div')
+                const countryName =document.createElement('p')
+                countryName.textContent = element.city
+
+
+                country.appendChild(countryName);
+                card.appendChild(country);
+
+            });
+            
+                
+
+
+        }
+        cardFunction()
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
