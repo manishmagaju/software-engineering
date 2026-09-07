@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function cookieFunction(key, value, path, maxage) {
+            const cookieString = `${key}=${value}; path=${path}; maxage=${maxage}`
+            document.cookie = cookieString
+        }
+
+        function getCookie(){
+            const splitedCookie = document.cookie.split(";");
+           
+            for (cookies of splitedCookie) {
+                console.log("insideloop", cookies);
+                var [keys, values] = cookies.split("=")
+                sessionStorage.setItem(keys, values);
+                
+            }
+            console.log("outside", values);
+        }
+
+        cookieFunction("theme", "light", "/", 98779);
+        getCookie();
+
+
+    </script>
+
+</body>
+
+</html>
